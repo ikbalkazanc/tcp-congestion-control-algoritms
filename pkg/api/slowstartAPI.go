@@ -19,8 +19,16 @@ func NewSlowStartAPI(p service.SlowStartService) SlowStartAPI {
 
 func (p SlowStartAPI) GenerateGrafic() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		reno := false
+		reno_query := r.URL.Query().Get("reno")
+		if reno_query != "" {
 
-		sended_package_per_step := p.SlowStartService.GenerateGrafic(false)
+			if reno_query == "1" {
+				reno = true
+			}
+		}
+
+		sended_package_per_step := p.SlowStartService.GenerateGrafic(reno)
 		line := charts.NewLine()
 		line.SetGlobalOptions(
 			charts.WithTitleOpts(opts.Title{Title: "basic line example", Subtitle: "This is the subtitle."}),

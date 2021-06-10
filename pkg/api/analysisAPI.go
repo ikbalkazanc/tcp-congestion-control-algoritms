@@ -37,8 +37,15 @@ func (p AnalysisAPI) GenerateGrafic() http.HandlerFunc {
 			}
 		}
 
+		reno := false
+		reno_query := r.URL.Query().Get("reno")
+		if reno_query != "" {
+			if reno_query == "1" {
+				reno = true
+			}
+		}
 		sended_package_per_step_as_aimd := p.AimdService.GenerateGrafic(increase_value, decrease_value)
-		sended_package_per_step_as_slowstart := p.SlowStart.GenerateGrafic(false)
+		sended_package_per_step_as_slowstart := p.SlowStart.GenerateGrafic(reno)
 		line := charts.NewLine()
 		line.SetGlobalOptions(
 			charts.WithTitleOpts(opts.Title{Title: "basic line example", Subtitle: "This is the subtitle."}),
