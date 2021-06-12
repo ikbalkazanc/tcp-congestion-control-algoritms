@@ -10,7 +10,6 @@ func NewSlowStartService() SlowStartService {
 func (p *SlowStartService) GenerateGrafic(isActiveReno bool) []int {
 	cwnd := 1
 	ssthreshold := 9999999 //inf
-
 	a, b := getLossPackages()
 	file_length := a
 	loss_package_list := *b
@@ -23,7 +22,6 @@ func (p *SlowStartService) GenerateGrafic(isActiveReno bool) []int {
 
 		//all files sended
 		if len(unsent_packages) == 0 && !result {
-
 			break
 			//failed send process and have unsent packages
 		} else if len(unsent_packages) > 0 && !result {
@@ -36,7 +34,6 @@ func (p *SlowStartService) GenerateGrafic(isActiveReno bool) []int {
 				cwnd = 1
 			}
 			index = index - len(unsent_packages)
-
 		} else {
 			//incresase linear
 			if ssthreshold <= cwnd {
@@ -47,7 +44,6 @@ func (p *SlowStartService) GenerateGrafic(isActiveReno bool) []int {
 			}
 			index = index + cwnd
 		}
-
 	}
 	return sended_package_per_step
 }
