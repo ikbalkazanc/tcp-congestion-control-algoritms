@@ -2,6 +2,7 @@ package api
 
 import (
 	"net/http"
+	"os"
 	"strconv"
 	"tcp-simulation/pkg/service"
 
@@ -78,5 +79,14 @@ func (p AnalysisAPI) GenerateGrafic() http.HandlerFunc {
 		line.Render(w)
 
 		RespondWithJSON(w, http.StatusOK, 0)
+	}
+}
+
+func (p AnalysisAPI) ReturnUserInterface() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		html, _ := os.Open("../../index.html")
+		b := make([]byte, 15000)
+		html.Read(b)
+		w.Write(b)
 	}
 }

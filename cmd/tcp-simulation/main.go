@@ -36,6 +36,7 @@ func (a *App) routes() {
 	a.Router.HandleFunc("/aimd", aimdAPI.GenerateGrafic()).Methods("GET")
 	a.Router.HandleFunc("/slowstart", slowStartAPI.GenerateGrafic()).Methods("GET")
 	a.Router.HandleFunc("/analysis", analysisAPI.GenerateGrafic()).Methods("GET")
+	a.Router.HandleFunc("/", analysisAPI.ReturnUserInterface()).Methods("GET")
 }
 
 func InitPackageAPI() api.PackageAPI {

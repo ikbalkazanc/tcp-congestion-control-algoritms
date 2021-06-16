@@ -33,7 +33,7 @@ func (p *SlowStartService) GenerateGrafic(isActiveReno bool) []int {
 			} else {
 				cwnd = 1
 			}
-			index = index - len(unsent_packages)
+			//index = index - len(unsent_packages)
 		} else {
 			//incresase linear
 			if ssthreshold <= cwnd {
