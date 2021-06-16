@@ -25,6 +25,8 @@ func (p *SlowStartService) GenerateGrafic(isActiveReno bool) []int {
 			break
 			//failed send process and have unsent packages
 		} else if len(unsent_packages) > 0 && !result {
+			//require send againt failded to index interval
+			index = index - cwnd
 			//set threshold value
 			ssthreshold = cwnd / 2
 			//set cwnd as reno or tahoe value
@@ -33,7 +35,7 @@ func (p *SlowStartService) GenerateGrafic(isActiveReno bool) []int {
 			} else {
 				cwnd = 1
 			}
-			//index = index - len(unsent_packages)
+
 		} else {
 			//incresase linear
 			if ssthreshold <= cwnd {

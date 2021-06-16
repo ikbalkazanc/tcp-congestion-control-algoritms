@@ -23,7 +23,7 @@ func (p PackageAPI) GetAllPackage() http.HandlerFunc {
 
 		line := charts.NewLine()
 		line.SetGlobalOptions(
-			charts.WithTitleOpts(opts.Title{Title: "basic line example", Subtitle: "This is the subtitle."}),
+			charts.WithTitleOpts(opts.Title{Title: "Kayıp Paketler", Subtitle: "0-" + strconv.Itoa(size) + " aralığındaki kayıp paket indexleri"}),
 		)
 
 		chart := make([]opts.LineData, 0)

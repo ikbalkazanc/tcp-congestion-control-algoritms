@@ -59,11 +59,11 @@ func (p *PackageService) Generate(_length int, _rate float64, _id_rate float64) 
 	n := 1
 	lossNumber := 0
 	for n < int(length) {
-		rate = rate + id_rate*rate
+		/*rate = rate + id_rate*rate
 		if rate != rate+id_rate*rate {
 			fmt.Print("Oran : ")
 			fmt.Println(rate)
-		}
+		}*/
 		if getRateResult(rate) {
 			_, err3 := f.WriteString(strconv.Itoa(n) + "\n")
 			packages = append(packages, n)
@@ -82,7 +82,7 @@ func (p *PackageService) Generate(_length int, _rate float64, _id_rate float64) 
 
 //get boolean rate according to arg[2]
 func getRateResult(x float64) bool {
-	rand.Seed(time.Now().UnixNano() * time.Now().UnixNano())
+	rand.Seed(time.Now().UnixNano() * time.Now().UnixNano() * time.Now().UnixNano() * time.Now().UnixNano() * time.Now().UnixNano() * time.Now().UnixNano() * time.Now().UnixNano() * time.Now().UnixNano() * time.Now().UnixNano() * time.Now().UnixNano())
 	random := rand.Float64()
 	if x > random {
 		return true

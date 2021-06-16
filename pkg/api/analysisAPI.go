@@ -49,7 +49,7 @@ func (p AnalysisAPI) GenerateGrafic() http.HandlerFunc {
 		sended_package_per_step_as_slowstart := p.SlowStart.GenerateGrafic(reno)
 		line := charts.NewLine()
 		line.SetGlobalOptions(
-			charts.WithTitleOpts(opts.Title{Title: "basic line example", Subtitle: "This is the subtitle."}),
+			charts.WithTitleOpts(opts.Title{Title: "Karşılaştırmalı Algoritmalar", Subtitle: "Aimd ve Slow Start Algoritmalarının tek bir grafik üzerinde karşılaştırıması"}),
 		)
 
 		chart_aimd := make([]opts.LineData, 0)
